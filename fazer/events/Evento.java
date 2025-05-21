@@ -1,12 +1,14 @@
 package events;
 
+import calendario.Calendar;
+
 public class Evento implements events {
     private String evento;
     private int dia;
-    private int mes;
+    private Calendar mes;
     private int ano;
 
-    public Evento(String evento, int dia, int mes, int ano) {
+    public Evento(String evento, int dia, Calendar mes, int ano) {
         this.evento = evento;
         this.dia = dia;
         this.mes = mes;
@@ -23,7 +25,7 @@ public class Evento implements events {
     }
 
     @Override
-    public int getMes() {
+    public Calendar getMes() {
         return mes;
     }
 

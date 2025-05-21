@@ -1,28 +1,18 @@
 package leitor_register;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class register {
 
-   /* public void gerarRelatorio(String filePath) {
+    public void gerarRelatorio(String filePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write("Matriz de Consumo por Subestação");
-            writer.newLine();
-            gerarMatrizConsumo(writer);
-            writer.newLine();
-
-            gerarMaiorConsumo(writer);
-            writer.newLine();
-
-            gerarMenorConsumo(writer);
-            writer.newLine();
-
-            gerarTotalAnual(writer);
-            writer.newLine();
-
-            gerarMediaMensal(writer);
+            writer.write("Calendario");
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-   */
+    }
 }
 

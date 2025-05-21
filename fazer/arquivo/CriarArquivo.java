@@ -1,5 +1,6 @@
 package arquivo;
 
+import calendario.Calendar;
 import events.Evento;
 
 import java.io.FileWriter;
@@ -16,7 +17,7 @@ public class CriarArquivo {
         String nome = entrada.nextLine();
         System.out.println("Qual o dia, mês e ano do evento? ");
         int dia = entrada.nextInt();
-        int mes = entrada.nextInt();
+        Calendar mes = Calendar.fromString(entrada.toString());
         int ano = entrada.nextInt();
 
         Evento evento = new Evento(nome, dia, mes, ano);
