@@ -1,24 +1,32 @@
 package arquivo;
 
+import events.Evento;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class CriarArquivo {
-    public void criar(){
+    public static void criar(){
         Scanner entrada = new Scanner(System.in);
         String texto;
 
+        System.out.println("Digite qual o evento: ");
+        String nome = entrada.nextLine();
+        System.out.println("Qual o dia, mês e ano do evento? ");
+        int dia = entrada.nextInt();
+        int mes = entrada.nextInt();
+        int ano = entrada.nextInt();
 
-        System.out.println("\nDigite:");
-        texto = entrada.nextLine(); //só para teste, pode ser mudado
-        entrada.nextLine(); // Limpa o buffer (ENTER)
+        Evento evento = new Evento(nome, dia, mes, ano);
+
+        //entrada.nextLine(); // Limpa o buffer (ENTER) - não precisou até o momento
 
         try{
             FileWriter arq = new FileWriter("testeCalendario.txt", true); //Modo append (true) pra adicionar ao final do arquivo
             PrintWriter gravarArq = new PrintWriter(arq);
-            gravarArq.println(texto); //escreve a linha do texto no arquivo
+            gravarArq.println(evento.toString()); //escreve a linha do texto no arquivo
             gravarArq.close(); //fecha o arquivo para garantir a gravação
             System.out.println("Texto gravado com sucesso!");
         } catch(
@@ -28,12 +36,19 @@ public class CriarArquivo {
             System.err.format("Erro de E/S: %s%n", e);
         }
 
-        LimparArquivo.limparArquivo();
+        System.out.println("Deseja limpar o arquivo agora ou encerrar o programa? (1- limpar, 2- encerrar)");
+        int ans = entrada.nextInt();
 
-        System.out.println("Encerrando o programa...");
+        if(ans == 1){
+            LimparArquivo.limparArquivo();
+        } else if(ans == 2){
+            System.out.println("Encerrando o programa...");
+            entrada.close(); // Fecha o Scanner
+        } else{
+            System.out.println("Digitou errado, fechando o programa por precaução...");
+            entrada.close();
+        }
 
-
-        entrada.close(); // Fecha o Scanner
 
     }
 
