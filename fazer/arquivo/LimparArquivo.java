@@ -14,13 +14,4 @@ public class LimparArquivo {
             System.err.format("Erro de E/S: %s%n", e);
         }
     }
-    public static String tabuada(int numero) {
-        StringBuilder resultado = new StringBuilder();
-        resultado.append("------ Tabuada do ").append(numero).append(" ------\n");
-        for (int i = 1; i <= 10; i++) {
-            resultado.append(numero).append(" x ").append(i)
-                    .append(" = ").append(numero * i).append("\n");
-        }
-        return resultado.toString();
-    }
 }
