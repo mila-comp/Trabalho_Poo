@@ -1,19 +1,31 @@
 package events;
 
-import calendario.Calendar;
+import java.io.Serializable;
 
-public class Evento implements events {
+public class Evento implements events, Serializable {
+    private static final long serialVersionUID = 1L;
     private String evento;
     private int dia;
-    private Calendar mes;
+    private int mes;
     private int ano;
+    private TipoEvento tipoEvento;
 
-    public Evento(String evento, int dia, Calendar mes, int ano) {
+    public Evento(String evento, int dia, int mes, int ano) {
         this.evento = evento;
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
+        this.tipoEvento = TipoEvento.OUTRO; // Tipo padrão
     }
+
+    public Evento(String evento, int dia, int mes, int ano, TipoEvento tipoEvento) {
+        this.evento = evento;
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
+        this.tipoEvento = tipoEvento;
+    }
+
     @Override
     public String getEvento() {
         return evento;
@@ -25,7 +37,7 @@ public class Evento implements events {
     }
 
     @Override
-    public Calendar getMes() {
+    public int getMes() {
         return mes;
     }
 
@@ -34,9 +46,17 @@ public class Evento implements events {
         return ano;
     }
 
-    @Override
-    public String toString() {
-        return "Evento: " + this.evento + "\n Data : " + this.dia + "/" + this.mes + "/" + this.ano;
+    public TipoEvento getTipoEvento() {
+        return tipoEvento;
     }
 
+    public void setTipoEvento(TipoEvento tipoEvento) {
+        this.tipoEvento = tipoEvento;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento: " + this.evento + " (" + this.tipoEvento + ")" +
+               "\n Data : " + this.dia + "/" + this.mes + "/" + this.ano;
+    }
 }
